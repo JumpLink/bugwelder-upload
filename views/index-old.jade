@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	h1= title
+	p Willkommen beim Bugwelder Datei-Upload
+
+	form(method="post", enctype="multipart/form-data")
+		p
+			label Title:
+				input(type="text", name="title")
+		p
+			label Image:
+				input(type="file", name="uploadingFile")
+		p
+			input(type="submit", value="Upload")
