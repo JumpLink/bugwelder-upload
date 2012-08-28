@@ -3,20 +3,25 @@ extends layout
 block content
 	p Willkommen beim Bugwelder Datei-Upload
 	img.logo(src='images/nerd.png')
-	form(id='uploadForm', enctype='multipart/form-data')
-		p
-			input(id='inputFile', type='file')
-		#fileInfo
-			h1 File Informations:
-			#fileName
-			#fileSize
-			#fileType
-			#progress
-				#indicator
-			#uploade_complete
-				label Finished: 
-				a(href='/login', title='download file').download
-		p
-			input(id='inputSubmit', type='button', value='Hochladen')
-		script(src='http://code.jquery.com/jquery-1.7.1.min.js')
-		script(src='/javascripts/main.js')
+	#fileInfo
+		h1 File Informations:
+		#fileName
+		#fileSize
+		#fileType
+		#progress
+			#indicator
+		#uploade_complete
+			label Finished: 
+			a.btn.btn-success(href='/login', title='download file').download
+	.div(style="padding:10px;")
+		form(id='uploadForm', enctype='multipart/form-data')
+			span(style="padding:10px;")
+				input(name="file", id='inputFile', type='file')
+			span(style="padding:10px;")		
+				input.btn.btn-primary(id='inputSubmit', type='button', value='Upload')
+
+			script(src='/javascripts/main.js')
+			script
+				$('#inputFile').customFileInput({
+					button_position : 'right'
+				});

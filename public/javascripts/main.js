@@ -46,7 +46,7 @@ function uploadComplete(evt) {
 	//$('a.download').css('href', document.location.href	+ 'uploads/' + file.name)
 	$('a.download').attr("href", document.location.href	+ 'uploads/' + file.name);
 	$('a.download').text("download file") //
-	alert(evt.target.responseText);
+	//alert(evt.target.responseText);
 }
 
 function uploadFailed(evt) {

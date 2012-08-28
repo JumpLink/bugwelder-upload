@@ -1,0 +1,4 @@
+A less error occured trying to build your bundle. Please paste the error below in an issue for us at http://github.com/twitter/bootstrap! thanks!
+
+
+{"type":"Parse","message":"Syntax Error on line 278","index":8378,"filename":"bootstrap.css","line":278,"column":0,"extract":["@fluidGridGutterWidth768:      percentage(@gridGutterWidth768/@gridRowWidth768);","@iconSpritePath: ../images/glyphicons-halflings.png;","@iconWhiteSpritePath: ../images/glyphicons-halflings-white.png;"]}

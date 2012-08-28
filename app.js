@@ -7,7 +7,18 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , format = require('util').format
-  , fs = require('fs');
+  , fs = require('fs')
+  , conf = require(__dirname+'/config/config.js')
+  , email = require('emailjs');
+  ;
+
+var mailserver  = email.server.connect({
+   user:    conf.google.account.user, 
+   password:conf.google.account.password, 
+   host:    conf.google.account.host, 
+   ssl:     true
+
+});
 
 var app = express();
 var upload_path = __dirname + '/public/uploads';
@@ -31,8 +42,8 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res, next){
-  console.log(req.body);
-  console.log(req.files.uploadingFile);
+  //console.log(req.body);
+  //console.log(req.files.uploadingFile);
 
   var uploadingFile = req.files.uploadingFile;
   var tmpPath = uploadingFile.path;
@@ -50,6 +61,13 @@ app.post('/', function(req, res, next){
         , req.files.uploadingFile.size / 1024 | 0 
         , req.files.uploadingFile.path
         , req.body.title));
+      mailserver.send({
+         text:    conf.server.domain+"/uploads/"+uploadingFile.name, 
+         from:    conf.google.target.from,
+         to:      conf.google.target.to,
+         subject: "Bugwelder Fileupload: " + req.files.uploadingFile.name
+      }, function(err, message) { console.log(err || message); });
+
     });
   });
 });
