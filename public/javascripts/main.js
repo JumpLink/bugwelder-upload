@@ -5,15 +5,15 @@ $('#inputFile').on('change', function() {
 	var file = $('#inputFile').get(0).files[0];
 	$('#fileInfo').show();
 	$('#fileName').text(['Name', file.name].join(delimeter));
-	$('#fileSize').text(['Size', file.size].join(delimeter));
-	$('#fileType').text(['Type', file.type].join(delimeter));
+	$('#fileSize').text(['Größe', file.size].join(delimeter));
+	$('#fileType').text(['Dateityp', file.type].join(delimeter));
 });
 
 $('#inputSubmit').on('click', function() {
 	var fd = new FormData();
 	fd.append('uploadingFile', $('#inputFile').get(0).files[0]);
 	fd.append('date', (new Date()).toString()); // req.body.date
-	fd.append('comment', 'This is a test.'); // req.body.comment
+	//fd.append('comment', 'This is a test.'); // req.body.comment
 
 	var xhr = new XMLHttpRequest();
 	xhr.upload.addEventListener("progress", uploadProgress, false);
@@ -50,9 +50,9 @@ function uploadComplete(evt) {
 }
 
 function uploadFailed(evt) {
-	alert("There was an error attempting to upload the file.");
+	alert("Es ist ein Fehler aufgetreten.");
 }
 
 function uploadCanceled(evt) {
-	alert("The upload has been canceled by the user or the browser dropped the connection.");
+	alert("Upload Abgebrochen! Der Upload wurde von Benutzer unterbrochen oder die Verbindung ist verloren gegangen.");
 }

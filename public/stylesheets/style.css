@@ -87,3 +87,7 @@ a.download{
 	background-color:white!important;
 	height: 20px;
 }
+
+.customfile.input-append .customfile-feedback {
+	float:left;
+}

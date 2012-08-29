@@ -4,7 +4,7 @@ block content
 	p Willkommen beim Bugwelder Datei-Upload
 	img.logo(src='images/nerd.png')
 	#fileInfo
-		h1 File Informations:
+		h1 Dateiinformationen:
 		#fileName
 		#fileSize
 		#fileType
@@ -18,10 +18,5 @@ block content
 			span(style="padding:10px;")
 				input(name="file", id='inputFile', type='file')
 			span(style="padding:10px;")		
-				input.btn.btn-primary(id='inputSubmit', type='button', value='Upload')
-
-			script(src='/javascripts/main.js')
-			script
-				$('#inputFile').customFileInput({
-					button_position : 'right'
-				});
+				input.btn.btn-primary(id='inputSubmit', type='button', value='Hochladen')
+	script(src='/javascripts/main.js')
